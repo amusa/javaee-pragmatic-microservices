@@ -42,34 +42,35 @@
         <name>java:global/jdbc/CargoTrackerDatabase</name>
         <class-name>org.apache.derby.jdbc.EmbeddedDriver</class-name>
         <url>jdbc:derby:${webapp.databaseTempDir}/cargo-tracker-database;create=true</url>
-        <property>
-            <name>weblogic.GlobalTransactionsProtocol</name>
-            <value>EmulateTwoPhaseCommit</value>
-        </property>
     </data-source>
     <jms-destination>
         <name>java:global/jms/CargoHandledQueue</name>
         <interface-name>javax.jms.Queue</interface-name>
+        <resource-adapter>jmsra</resource-adapter>        
         <destination-name>CargoHandledQueue</destination-name>
     </jms-destination>
     <jms-destination>
         <name>java:global/jms/MisdirectedCargoQueue</name>
         <interface-name>javax.jms.Queue</interface-name>
-        <destination-name>MisdirectedCargoQueue</destination-name>
+        <resource-adapter>jmsra</resource-adapter>         
+        <destination-name>MisdirectedCargoQueue</destination-name>       
     </jms-destination>
     <jms-destination>
         <name>java:global/jms/DeliveredCargoQueue</name>
         <interface-name>javax.jms.Queue</interface-name>
-        <destination-name>DeliveredCargoQueue</destination-name>
+        <resource-adapter>jmsra</resource-adapter>            
+        <destination-name>DeliveredCargoQueue</destination-name>    
     </jms-destination>
     <jms-destination>
         <name>java:global/jms/RejectedRegistrationAttemptsQueue</name>
         <interface-name>javax.jms.Queue</interface-name>
-        <destination-name>RejectedRegistrationAttemptsQueue</destination-name>
+        <resource-adapter>jmsra</resource-adapter>          
+        <destination-name>RejectedRegistrationAttemptsQueue</destination-name>      
     </jms-destination>
     <jms-destination>
         <name>java:global/jms/HandlingEventRegistrationAttemptQueue</name>
         <interface-name>javax.jms.Queue</interface-name>
-        <destination-name>HandlingEventRegistrationAttemptQueue</destination-name>
+        <resource-adapter>jmsra</resource-adapter>          
+        <destination-name>HandlingEventRegistrationAttemptQueue</destination-name>      
     </jms-destination>
 </web-app>
