@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app version="3.1"
-         xmlns="http://xmlns.jcp.org/xml/ns/javaee"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+<web-app
+    version="3.1"
+    xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <!-- Overriding system level defaults is a decent usage of XML -->
     <context-param>
         <param-name>javax.faces.PROJECT_STAGE</param-name>
@@ -39,38 +40,33 @@
     <!-- Defining these at the application server level instead of here
     Can be more operations friendly and help make deployment even faster. -->
     <data-source>
-        <name>java:global/jdbc/CargoTrackerDatabase</name>
-        <class-name>org.apache.derby.jdbc.EmbeddedDriver</class-name>
-        <url>jdbc:derby:${webapp.databaseTempDir}/cargo-tracker-database;create=true</url>
+        <name>java:app/jdbc/CargoTrackerDatabase</name>
+        <class-name>org.h2.jdbcx.JdbcDataSource</class-name>
+        <url>jdbc:h2:${webapp.databaseTempDir}/cargo-tracker-database</url>
     </data-source>
     <jms-destination>
         <name>java:global/jms/CargoHandledQueue</name>
-        <interface-name>javax.jms.Queue</interface-name>
-        <resource-adapter>jmsra</resource-adapter>        
+        <interface-name>javax.jms.Queue</interface-name>       
         <destination-name>CargoHandledQueue</destination-name>
     </jms-destination>
     <jms-destination>
         <name>java:global/jms/MisdirectedCargoQueue</name>
-        <interface-name>javax.jms.Queue</interface-name>
-        <resource-adapter>jmsra</resource-adapter>         
+        <interface-name>javax.jms.Queue</interface-name>       
         <destination-name>MisdirectedCargoQueue</destination-name>       
     </jms-destination>
     <jms-destination>
         <name>java:global/jms/DeliveredCargoQueue</name>
-        <interface-name>javax.jms.Queue</interface-name>
-        <resource-adapter>jmsra</resource-adapter>            
+        <interface-name>javax.jms.Queue</interface-name>        
         <destination-name>DeliveredCargoQueue</destination-name>    
     </jms-destination>
     <jms-destination>
         <name>java:global/jms/RejectedRegistrationAttemptsQueue</name>
-        <interface-name>javax.jms.Queue</interface-name>
-        <resource-adapter>jmsra</resource-adapter>          
+        <interface-name>javax.jms.Queue</interface-name>        
         <destination-name>RejectedRegistrationAttemptsQueue</destination-name>      
     </jms-destination>
     <jms-destination>
         <name>java:global/jms/HandlingEventRegistrationAttemptQueue</name>
-        <interface-name>javax.jms.Queue</interface-name>
-        <resource-adapter>jmsra</resource-adapter>          
+        <interface-name>javax.jms.Queue</interface-name>       
         <destination-name>HandlingEventRegistrationAttemptQueue</destination-name>      
     </jms-destination>
 </web-app>
